@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./core
+      dockerfile: Dockerfile
+    container_name: backend-core
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    environment:
+      SECRET_KEY: "test"
+      DEBUG: "True"
+    volumes:
+      - ./core:/app
+
+  bale-bot:
+    build:
+      context: ./bot
+      dockerfile: Dockerfile
+    container_name: bale-bot
+    restart: unless-stopped
+    environment:
+      BOT_TOKEN: "308435339:sPA6jJMt6XMfZey6P0jAFIg6rkl75Ug2xW4"
+      DJANGO_API_URL: "http://backend:8000/api/"
+      ADMIN_ID: "1485792208"
+    volumes:
+      - ./bot:/app
+    working_dir: /app
+    command: ["python", "-u", "bot.py"]
