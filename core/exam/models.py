@@ -4,7 +4,7 @@ from django.db import models
 
 class User(models.Model):
 
-    bale_id = models.CharField(max_length=100, unique=True)
+    user = models.CharField(max_length=100, unique=True)
 
     name = models.CharField(max_length=100)
 

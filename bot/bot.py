@@ -101,7 +101,7 @@ def send_question(chat_id, questions, index):
 def register_backend(chat_id, name, phone):
 
     payload = {
-        "bale_id": chat_id,
+        "user": chat_id,
         "name": name,
         "phone": phone
     }
@@ -144,7 +144,7 @@ def get_profile(chat_id):
 def save_exam(chat_id, score, exam_level):
 
     payload = {
-        "bale_id": chat_id,
+        "user": chat_id,
         "score": score,
         "exam_level": exam_level
     }
